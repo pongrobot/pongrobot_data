@@ -1,19 +1,19 @@
 clear all; close all; clc;
 
 % Target Pose
-x = 5;
+x = 10;
 y = 5;
-z = -1;
+z = 0;
 
 theta = deg2rad(35);
 r = sqrt(x^2 + y^2);
 yaw = atan2(y, x);
 
-t_c = sqrt( ( 2.0 * ( r * tan(theta) - z  ) ) / 9.81 ) % this is correct according to my math
+t_c = sqrt( ( 2.0 * ( r * tan(theta) - z  ) ) / 9.81 ) 
 v = r / (cos(theta) * t_c);
 
 % Simulate shot
-t = [0:0.01:t_c]; % this should not need the sqrt(2)
+t = [0:0.01:t_c];
 r_t = v * cos(theta) * t;
 z_t = v * sin(theta) * t - 1/2 * 9.81 * t.^2;
 x_t = r_t * cos(yaw)
